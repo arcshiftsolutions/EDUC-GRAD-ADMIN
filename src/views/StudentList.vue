@@ -8,6 +8,16 @@
       <form v-on:submit.prevent>
         <div class="form-group">
           <input
+            v-model="username"
+            placeholder="username"
+            class="pen-search form-control"
+          />
+          <input
+            v-model="password"
+            placeholder="password"
+            class="pen-search form-control"
+          />
+          <input
             v-model="penInput"
             placeholder="Student PEN"
             class="pen-search form-control"
@@ -81,6 +91,8 @@ export default {
       student: [],
       penInput: "",
       displayMessage: "",
+      username: "",
+      password: "",
     };
   },
   components: {
@@ -91,7 +103,11 @@ export default {
       let currentObj = this;
       if (this.penInput) {
         try {
-          StudentService.getStudentByPen(this.penInput).then((response) => {
+          StudentService.getStudentByPen(
+            this.penInput,
+            this.username,
+            this.password
+          ).then((response) => {
             this.student = response.data;
           });
         } catch (error) {
