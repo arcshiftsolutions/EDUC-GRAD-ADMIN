@@ -150,7 +150,7 @@
         <v-th sortKey="interimPercent">Interim %</v-th>
         <v-th sortKey="interimLetterGrade">Interim LG</v-th>
         <v-th sortKey="finalLetterGrade">Final LG</v-th>
-        <v-th sortKey="finalPercent">Final %</v-th>    
+        <v-th sortKey="finalPercent">Final %</v-th>
         <v-th sortKey="finalLetterGrade">Final Letter Gr</v-th>
         <v-th sortKey="?">Fine Arts/Applied Skills Reqt</v-th>
         <v-th sortKey="creditsUsedForGrad">Credits Used for Grad</v-th>
@@ -247,6 +247,7 @@ export default {
       this.pen = this.student.pen;
     }
     if (this.student) {
+      console.log(this.pen);
       CourseAchievementService.getStudentCourseAchievements(this.student.pen)
         .then((response) => {
           console.log(response.data);
