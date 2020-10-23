@@ -138,24 +138,27 @@
     <v-table
       :data="achievements"
       :filters="filters"
-      class="table table-responsive table-striped table-hover table-md text-center align-middle"
+      class="table table-sm table-striped table-hover text-center align-middle"
     >
       <thead slot="head">
-        <v-th sortKey="ourseCode">Code</v-th>
+        <v-th sortKey="courseCode">Code</v-th>
         <v-th sortKey="courseLevel">Level</v-th>
         <v-th sortKey="sessionDate">Session</v-th>
-        <v-th sortKey="?">Name</v-th>
-        <v-th sortKey="?">Equiv, Chal</v-th>
+        <!-- not sure -->
+        <v-th sortKey="courseName">Name</v-th>
+        <!-- not sure -->
+        <v-th sortKey="courseEquivChal">Equiv, Chal</v-th>
         <v-th sortKey="credits">Credits</v-th>
         <v-th sortKey="interimPercent">Interim %</v-th>
         <v-th sortKey="interimLetterGrade">Interim LG</v-th>
         <v-th sortKey="finalLetterGrade">Final LG</v-th>
         <v-th sortKey="finalPercent">Final %</v-th>
         <v-th sortKey="finalLetterGrade">Final Letter Gr</v-th>
-        <v-th sortKey="?">Fine Arts/Applied Skills Reqt</v-th>
+        <!-- not sure -->
+        <v-th sortKey="fineArtsAppliedSkillsReqt">Fine Arts/Applied Skills Reqt</v-th>
         <v-th sortKey="creditsUsedForGrad">Credits Used for Grad</v-th>
         <v-th sortKey="gradReqMet">Reqt Met</v-th>
-        <v-th sortKey="?">Reqt Name</v-th>
+        <v-th sortKey="gradName">Reqt Name</v-th>
         <v-th sortKey="relatedCourse">Related Course</v-th>
         <v-th sortKey="relatedLevel">Related Level</v-th>
         <v-th sortKey="courseDescription">Description</v-th>
@@ -173,19 +176,24 @@
       </thead>
       <tbody slot="body" slot-scope="{ displayData }">
         <tr v-for="row in displayData" :key="row.courseAchievementId">
-          <td>{{ getCourseName(row.courseId) }}</td>
+          <td>{{ row.courseCode }}</td>
+          <td>{{ row.courseLevel }}</td>
           <td>{{ row.sessionDate }}</td>
-          <td>{{ row.finalPercent }} %</td>
+          <td>{{ row.courseName }}</td>
+          <td>{{ row.courseEquivChal }}</td>
+          <td>{{ row.credits }}</td>
           <td>{{ row.interimPercent }} %</td>
-          <td>{{ row.finalLetterGrade }}</td>
-          <td>{{ row.credits }}</td>
-          <td>{{ row.courseType }}</td>
           <td>{{ row.interimLetterGrade }}</td>
-          <!-- NEW fields-->
+          <td>{{ row.finalPercent }} %</td>
           <td>{{ row.finalLetterGrade }}</td>
-          <td>{{ row.credits }}</td>
-          <td>{{ row.courseType }}</td>
-          <td>{{ row.interimLetterGrade }}</td>
+          <td>{{ row.finalLetterGrade }}</td>
+          <td>{{ row.fineArtsAppliedSkillsReqt }}</td>
+          <td>{{ row.creditsUsedForGrad }}</td>
+          <td>{{ row.gradReqMet }}</td>
+          <td>{{ row.gradName }}</td>
+          <td>{{ row.relatedCourse }}</td>
+          <td>{{ row.relatedLevel }}</td>
+          <td>{{ row.courseDescription }}</td>
           <td>
             <router-link
               class="course-achievement-show"
@@ -250,8 +258,8 @@ export default {
       console.log(this.pen);
       CourseAchievementService.getStudentCourseAchievements(this.student.pen)
         .then((response) => {
-          console.log(response.data);
           this.achievements = response.data;
+          console.log(this.achievements);
         })
         // eslint-disable-next-line no-unused-vars
         .catch((error) => {});
