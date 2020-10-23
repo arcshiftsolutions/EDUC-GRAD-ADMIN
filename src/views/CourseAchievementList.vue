@@ -9,7 +9,11 @@
             <router-link class="student-list" :to="{ name: 'student-list' }"
               ><a href="#">Student Page</a></router-link
             >
-          </strong>
+            or the
+            <router-link class="home" :to="{ name: 'home' }"
+              ><a href="#">Graduation Status Page</a></router-link
+            >"</strong
+          >
         </div>
       </div>
     </div>
@@ -122,11 +126,11 @@
     </div>
     <div class="row">
       <div class="col-12 student-pen-display">
-        {{ student }}
-        <h3 v-if="student">
-          {{ this.student.studGiven }}
-          {{ this.student.studMiddle }}
-          {{ this.student.Surname }} ( {{ this.currentStudent.pen }})
+        <!-- {{ currentStudent }} -->
+        <h3 v-if="currentStudent">
+          {{ this.currentStudent.studGiven }}
+          {{ this.currentStudent.studMiddle }}
+          {{ this.currentStudent.Surname }} (PEN: {{ this.currentStudent.pen }})
         </h3>
       </div>
     </div>
@@ -136,7 +140,7 @@
       :filters="filters"
       class="table table-sm table-striped table-hover text-center align-middle"
     >
-      <thead slot="head">
+      <thead slot="head" class="thead-dark">
         <v-th sortKey="courseCode">Code</v-th>
         <v-th sortKey="courseLevel">Level</v-th>
         <v-th sortKey="sessionDate">Session</v-th>
@@ -148,20 +152,18 @@
         <v-th sortKey="interimPercent">Interim %</v-th>
         <v-th sortKey="interimLetterGrade">Interim LG</v-th>
         <v-th sortKey="finalLetterGrade">Final LG</v-th>
-        <v-th sortKey="finalPercent">Final %</v-th>
+        <v-th sortKey="finalPercent">Final %</v-th>    
         <v-th sortKey="finalLetterGrade">Final Letter Gr</v-th>
         <!-- not sure -->
-        <v-th sortKey="fineArtsAppliedSkillsReqt"
-          >Fine Arts/Applied Skills Reqt</v-th
-        >
+        <!-- <v-th sortKey="fineArtsAppliedSkillsReqt">Fine Arts/Applied Skills Reqt</v-th>
         <v-th sortKey="creditsUsedForGrad">Credits Used for Grad</v-th>
         <v-th sortKey="gradReqMet">Reqt Met</v-th>
         <v-th sortKey="gradName">Reqt Name</v-th>
         <v-th sortKey="relatedCourse">Related Course</v-th>
         <v-th sortKey="relatedLevel">Related Level</v-th>
-        <v-th sortKey="courseDescription">Description</v-th>
+        <v-th sortKey="courseDescription">Description</v-th> -->
 
-        <th>
+        <!-- <th>
           <button
             type="button"
             class="add-course-achievement-button btn btn-primary"
@@ -170,7 +172,7 @@
           >
             Add Course
           </button>
-        </th>
+        </th> -->
       </thead>
       <tbody slot="body" slot-scope="{ displayData }">
         <tr v-for="row in displayData" :key="row.courseAchievementId">
@@ -185,14 +187,14 @@
           <td>{{ row.finalPercent }} %</td>
           <td>{{ row.finalLetterGrade }}</td>
           <td>{{ row.finalLetterGrade }}</td>
-          <td>{{ row.fineArtsAppliedSkillsReqt }}</td>
+          <!-- <td>{{ row.fineArtsAppliedSkillsReqt }}</td>
           <td>{{ row.creditsUsedForGrad }}</td>
           <td>{{ row.gradReqMet }}</td>
           <td>{{ row.gradName }}</td>
           <td>{{ row.relatedCourse }}</td>
           <td>{{ row.relatedLevel }}</td>
-          <td>{{ row.courseDescription }}</td>
-          <td>
+          <td>{{ row.courseDescription }}</td> -->
+          <!-- <td>
             <router-link
               class="course-achievement-show"
               :to="{
@@ -202,7 +204,7 @@
             >
               <button class="btn btn-primary active">EDIT</button>
             </router-link>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </v-table>
@@ -253,7 +255,6 @@ export default {
       this.pen = this.student.pen;
     }
     if (this.student) {
-      console.log(this.pen);
       CourseAchievementService.getStudentCourseAchievements(this.student.pen)
         .then((response) => {
           this.achievements = response.data;
