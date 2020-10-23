@@ -11,8 +11,8 @@
 import Bcheader from "@/components/BCHeader";
 export default {
   components: {
-    Bcheader
-  }
+    Bcheader,
+  },
 };
 </script>
 <style lang="css">
@@ -24,9 +24,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.main-container{
+.main-container {
   margin: 35px;
-  margin-top:130px;
+  margin-top: 130px;
 }
 .logo {
   align-self: center;

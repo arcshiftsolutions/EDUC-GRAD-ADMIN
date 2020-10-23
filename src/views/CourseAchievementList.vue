@@ -9,11 +9,7 @@
             <router-link class="student-list" :to="{ name: 'student-list' }"
               ><a href="#">Student Page</a></router-link
             >
-            or the
-            <router-link class="home" :to="{ name: 'home' }"
-              ><a href="#">Graduation Status Page</a></router-link
-            >"</strong
-          >
+          </strong>
         </div>
       </div>
     </div>
@@ -126,11 +122,11 @@
     </div>
     <div class="row">
       <div class="col-12 student-pen-display">
-        {{ currentStudent }}
-        <h3 v-if="currentStudent">
-          {{ this.currentStudent.studGiven }}
-          {{ this.currentStudent.studMiddle }}
-          {{ this.currentStudent.Surname }} ( {{ this.currentStudent.pen }})
+        {{ student }}
+        <h3 v-if="student">
+          {{ this.student.studGiven }}
+          {{ this.student.studMiddle }}
+          {{ this.student.Surname }} ( {{ this.currentStudent.pen }})
         </h3>
       </div>
     </div>
@@ -155,7 +151,9 @@
         <v-th sortKey="finalPercent">Final %</v-th>
         <v-th sortKey="finalLetterGrade">Final Letter Gr</v-th>
         <!-- not sure -->
-        <v-th sortKey="fineArtsAppliedSkillsReqt">Fine Arts/Applied Skills Reqt</v-th>
+        <v-th sortKey="fineArtsAppliedSkillsReqt"
+          >Fine Arts/Applied Skills Reqt</v-th
+        >
         <v-th sortKey="creditsUsedForGrad">Credits Used for Grad</v-th>
         <v-th sortKey="gradReqMet">Reqt Met</v-th>
         <v-th sortKey="gradName">Reqt Name</v-th>

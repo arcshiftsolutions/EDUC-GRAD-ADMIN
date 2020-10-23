@@ -1,13 +1,21 @@
 <template>
   <div class="studentlist">
     <div class="container">
+      <SiteMessage
+        v-bind:message="this.displayMessage"
+        v-if="displayMessage"
+      ></SiteMessage>
       <form v-on:submit.prevent>
         <div class="form-group">
           <input
             v-model="penInput"
             placeholder="Student PEN"
-            class="pen-search"
-          /><button v-on:click="findStudent" class="btn btn-primary">
+            class="pen-search form-control"
+          />
+          <button
+            v-on:click="findStudent"
+            class="btn btn-primary pen-search-button"
+          >
             Find Student
           </button>
         </div>
@@ -65,22 +73,30 @@
 // @ is an alias to /src
 import { store } from "@/store.js";
 import StudentService from "@/services/StudentService.js";
+import SiteMessage from "@/components/SiteMessage";
 export default {
   name: "studentlist",
   data() {
     return {
       student: [],
       penInput: "",
+      displayMessage: "",
     };
   },
-  components: {},
+  components: {
+    SiteMessage: SiteMessage,
+  },
   methods: {
     findStudent: function() {
-      console.log("finding student");
+      let currentObj = this;
       if (this.penInput) {
-        StudentService.getStudentByPen(this.penInput).then((response) => {
-          this.student = response.data;
-        });
+        try {
+          StudentService.getStudentByPen(this.penInput).then((response) => {
+            this.student = response.data;
+          });
+        } catch (error) {
+          currentObj.displayMessage = "Pen (" + this.penInput + ") not found";
+        }
       }
     },
     selectStudent: function(pen) {
@@ -104,9 +120,14 @@ export default {
   margin-right: 10px;
 }
 .pen-search {
-  width: 400px;
   margin-right: 9px;
   padding: 5px;
+  float: left;
+  width: 50%;
+}
+.pen-search-button {
+  position: absolute;
+  top: -10;
 }
 h6 {
   font-size: 1.5rem;
