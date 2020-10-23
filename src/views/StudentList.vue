@@ -116,7 +116,7 @@ export default {
       }
     },
     selectStudent: function(pen) {
-      console.log("Loading Student Profile");
+      //console.log("Loading Student Profile");
       store.currentPen = pen;
       store.currentStudent = this.student;
     },

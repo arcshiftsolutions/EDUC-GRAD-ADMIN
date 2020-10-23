@@ -152,7 +152,7 @@
         <v-th sortKey="interimPercent">Interim %</v-th>
         <v-th sortKey="interimLetterGrade">Interim LG</v-th>
         <v-th sortKey="finalLetterGrade">Final LG</v-th>
-        <v-th sortKey="finalPercent">Final %</v-th>    
+        <v-th sortKey="finalPercent">Final %</v-th>
         <v-th sortKey="finalLetterGrade">Final Letter Gr</v-th>
         <!-- not sure -->
         <!-- <v-th sortKey="fineArtsAppliedSkillsReqt">Fine Arts/Applied Skills Reqt</v-th>
@@ -258,7 +258,7 @@ export default {
       CourseAchievementService.getStudentCourseAchievements(this.student.pen)
         .then((response) => {
           this.achievements = response.data;
-          console.log(this.achievements);
+          //console.log(this.achievements);
         })
         // eslint-disable-next-line no-unused-vars
         .catch((error) => {});
