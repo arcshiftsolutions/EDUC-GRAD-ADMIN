@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: process.env.VUE_APP_STUDENTS_API_HOST,
+    baseURL: 'https://gradstudent-api-wbmfsf-dev.pathfinder.gov.bc.ca',
     withCredentials: true,
     headers: {
         Accept: 'application/json',
