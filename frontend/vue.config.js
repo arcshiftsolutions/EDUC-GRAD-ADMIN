@@ -13,7 +13,7 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
-          target: process.env.VUE_APP_STUDENTS_API_HOST,
+          target: 'https://sld-api-75e61b-tools.apps.silver.devops.gov.bc.ca',
           changeOrigin: true,
           pathRewrite: {
             '^/api': ''
