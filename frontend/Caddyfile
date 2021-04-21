@@ -17,7 +17,7 @@
     }
     log stdout
     
-    proxy /api https://sld-api-75e61b-tools.apps.silver.devops.gov.bc.ca
+    proxy /api https://grad-admin-77c02f-tools.apps.silver.devops.gov.bc.ca
 
     errors stdout
 }
