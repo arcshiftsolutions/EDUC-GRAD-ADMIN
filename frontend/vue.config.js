@@ -13,7 +13,7 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
-          target: 'https://grad-admin-77c02f-tools.apps.silver.devops.gov.bc.ca',
+          target: 'https://gradstudent-api-77c02f-dev.apps.silver.devops.gov.bc.ca',
           changeOrigin: true,
           pathRewrite: {
             '^/api': ''
