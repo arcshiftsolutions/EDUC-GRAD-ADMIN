@@ -17,8 +17,6 @@
     }
     log stdout
     
-    proxy /api https://gradstudent-api-77c02f-dev.apps.silver.devops.gov.bc.ca
-
     errors stdout
 }
     
