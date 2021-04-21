@@ -23,7 +23,7 @@
     }
     log stdout
     
-    proxy /api {$HOST_ROUTE}
+    proxy /api https://sld-api-75e61b-tools.apps.silver.devops.gov.bc.ca
 
     errors stdout
 }
