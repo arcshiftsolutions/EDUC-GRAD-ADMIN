@@ -12,19 +12,13 @@ module.exports = {
     },
     devServer: {
       proxy: {
-        '/grad': {
+        '/api': {
             target: 'https://gradstudent-api-77c02f-dev.apps.silver.devops.gov.bc.ca',
-            changeOrigin: true,
-            pathRewrite: {
-                '^/grad': ''
-            }
+            changeOrigin: true
         },
-        '/assessments': {
+        '/api/v1/studentassessment': {
           target: 'https://student-assessment-api-77c02f-dev.apps.silver.devops.gov.bc.ca',
-          changeOrigin: true,
-            pathRewrite: {
-                '^/assessments': ''
-            }
+          changeOrigin: true
         },
         '/api/studentexam': {
             target: process.env.VUE_APP_STUDENT_EXAMS_API_HOST,
